@@ -20,6 +20,6 @@ from muni_election import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
-    path('vote/', views.vote),
-    path('standings/', views.standings),
+    path('vote/', views.vote, name='sexy'),
+    path('standings/', views.standings, name='adiba'),
 ]
