@@ -22,6 +22,11 @@ TEMPLATES_DIR = BASE_DIR.joinpath('templates')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '*zxu%m^=l2^g1(1dqv@kdu#l_s0r%hnb7+7b_6ui1h3-34&x30'
+#SMTP password
+Smtp_pw = 'OnlineVotingDjango#HASH512'
+
+SITE_NAME = 'adiba-online-election.com'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -134,3 +139,11 @@ MEDIA_ROOT = BASE_DIR/ 'media'
 
 # auth user model
 AUTH_USER_MODEL = 'muni_election.user'
+
+#smtp configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER ='online.election.django@gmail.com'
+EMAIL_HOST_PASSWORD = Smtp_pw
+EMAIL_PORT = 587
