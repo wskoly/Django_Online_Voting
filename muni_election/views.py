@@ -59,4 +59,4 @@ def voter_reg(request):
     return render(request,'voter_reg.html',context=context)
 
 def voter_reg_complete(request):
-    re
+    return render(request,'voter_reg_complete.html')
