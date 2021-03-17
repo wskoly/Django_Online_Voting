@@ -1,6 +1,10 @@
-from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm, PasswordChangeForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm, PasswordChangeForm,UserCreationForm
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
+from django.forms import ModelForm
+from muni_election.models import voter
+from django.contrib.auth import get_user_model
+
 class VoterLoginForm(AuthenticationForm):
     error_messages = {
         'invalid_login': _(
@@ -17,3 +21,14 @@ class VoterLoginForm(AuthenticationForm):
                 self.error_messages['notVoter'],
                 code='notVoter',
             )
+
+class userReg(ModelForm):
+    class Meta:
+        user = get_user_model()
+        model = user
+        fields = ['username','password','first_name','last_name','email','phone']
+
+class voterReg(ModelForm):
+    class Meta:
+        model = voter
+        fields = ['voter_id','area','serial','dob','gender','ward','municipality']
