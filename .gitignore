@@ -131,3 +131,7 @@ dmypy.json
 .vscode
 .vscode/
 .vscode/*
+
+.migrations
+.migrations/
+.migrations/*
