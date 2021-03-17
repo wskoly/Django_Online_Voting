@@ -137,3 +137,5 @@ dmypy.json
 .migrations/*
 *.migrations/
 *.migrations/*
+**/**/migrations
+**/**/migrations/*
