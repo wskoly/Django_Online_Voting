@@ -1,0 +1,178 @@
+@import url(https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700);
+
+body {
+  background-color: #efefef;
+  color: red;
+  font-size: 100%;
+  font-family: 'PT Sans Caption', sans-serif;
+  font-weight: 400;
+}
+
+h1 {
+    text-align:center;
+    color:#01caa7;
+}
+
+form {
+  border-top: 8px solid #01caa7;
+  width: 606px;
+  margin: 40px auto;
+}
+
+fieldset {
+  margin: auto;
+  width: 470px;
+  height: auto;
+  border: 1px solid #e5e5e5;
+  border-top: 0px solid #e5e5e5;
+  background: #fdfdfd;
+  padding: 40px;
+}
+
+form div {
+  padding: 0 0 40px 0;
+}
+
+form label {
+  float: left;
+  width: 200px;
+  font-size: 1em;
+  color: #111;
+}
+
+form label.mid {
+  line-height: 40px;
+}
+
+form input, form select {
+ background: #01caa7;
+	border: 2px solid #fff;
+	color: #fff;
+	font-family: 'PT Sans Caption', sans-serif;
+	font-size: 1em;
+	font-weight: 400;
+	height: 40px;
+	margin: 0;
+	padding: 0 10px;
+	width: 240px;
+ vertical-align: middle;
+}
+
+form input:hover, form select:hover, form textarea:hover {
+	border: 2px solid #2b7b5c;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+  border-color: #2b7b5c;
+  outline: none;
+}
+
+form select {
+  float: left;
+  margin-bottom: 40px;
+  appearance: none;
+  width: 260px;
+  border-radius: 0;
+}
+
+form input.checkbox, form input.radio {
+  margin: 0;
+  padding: 2px 0;
+  width: auto;
+  height: auto;
+}
+
+form input.button {
+  width: 270px;
+  height: 40px;
+  border: 0px solid green;
+}
+
+form textarea {
+  width: 240px;
+  height: 200px;
+  padding: 10px;
+  background: #01caa7;
+	 border: 2px solid #fff;
+	 color: #fff;
+}
+
+form input.button {
+  width: 270px;
+  height: 40px;
+  border: 0px solid green;
+}
+
+form input.submit {
+  float: left;
+  margin-left: 200px;
+  width: 100px;
+  height: 40px;
+  color: #fff;
+}
+
+form input.submit:hover {
+ background: #1d9676;
+	background: -webkit-linear-gradient(#1d9676, #01caa7);
+	background: -moz-linear-gradient(#1d9676, #01caa7);
+	background: -o-linear-gradient(#1d9676, #01caa7);
+	background: -ms-linear-gradient(#1d9676, #01caa7);
+	background: linear-gradient(#1d9676, #01caa7);
+}
+
+form button {
+  width: 400px;
+  height: 40px;
+  border: 2px solid red;
+}
+
+form button.submit {
+  float: left;
+  margin-left: 200px;
+  width: 100px;
+  height: 40px;
+  color: red;
+}
+
+form button.submit:hover {
+ background: #1d9676;
+	background: -webkit-linear-gradient(#1d9676, #01caa7);
+	background: -moz-linear-gradient(#1d9676, #01caa7);
+	background: -o-linear-gradient(#1d9676, #01caa7);
+	background: -ms-linear-gradient(#1d9676, #01caa7);
+	background: linear-gradient(#1d9676, #01caa7);
+}
+
+.styled-table {
+  border-collapse: collapse;
+  margin: auto 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 300px;
+  max-width: 380px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.styled-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+}
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+.styled-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}

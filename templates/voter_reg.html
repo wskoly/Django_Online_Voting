@@ -1,17 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Voter registration</title>
+    <link rel="stylesheet" href="{% static 'muni_election/css/form.css' %}">
 </head>
 <body>
+<h1>Voter Registration</h1>
 <form method="POST">
+    <fieldset>
     {% csrf_token %}
-    <table>
+        <table class="styled-table">
         {{form1}}
         {{form2}}
-    </table>
-    <button type="submit">Submit</button>
+        </table>
+        <br>
+    <button type="submit" class="submit">Submit</button>
+    </fieldset>
 </form>
 </body>
 </html>
