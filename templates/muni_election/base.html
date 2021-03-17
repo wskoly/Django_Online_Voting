@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="{% static 'muni_election/css/nav.css' %}">
 </head>
 <header>
-    <ul>
-        <li><a href="{% url 'vote' %}">Caste Vote</a></li>
-        <li><a href="{% url 'standings' %}">Standings</a></li>
-    </ul>
+    <div class="topnav">
+        <a class="active" href="{% url 'vote' %}">Caste Vote</a>
+        <a href="{% url 'standings' %}">Standings</a>
+        <a href="{% url 'change_password' %}">Change Password</a>
+        <a style="float:right;" href="{% url 'logout' %}">Logout</a>
+    </div>
 </header>
 
 <body>
