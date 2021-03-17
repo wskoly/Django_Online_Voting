@@ -27,7 +27,7 @@ def index(request):
 def vote(request):
     wc = "welcome "+request.user.first_name+" "+request.user.last_name
     user = request.user
-    vot = voter.objects.get(voter_user = user)
+    vot = voter.objects.get(user = user)
     context = {'welcome':wc, 'voter':mTd(vot)}
     return render(request,'muni_election/vote.html',context=context)
 @login_required(login_url='index')

@@ -24,7 +24,7 @@ class voter(models.Model):
     voter_id = models.CharField(max_length=17, primary_key=True, unique=True)
     area = models.ForeignKey(voter_area, on_delete=models.CASCADE)
     serial = models.IntegerField()
-    dob = models.DateField()
+    dob = models.DateField(help_text="Date of birth should be in a format of mm/dd/yyyy")
     gender = models.CharField(max_length=20,choices=gen_choice)
     ward = models.IntegerField()
     municipality = models.CharField(max_length=50)
