@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from django.forms import ModelForm
 from muni_election.models import voter
 from django.contrib.auth import get_user_model
+from django import forms
 
 class VoterLoginForm(AuthenticationForm):
     error_messages = {
@@ -23,10 +24,20 @@ class VoterLoginForm(AuthenticationForm):
             )
 
 class userReg(ModelForm):
+    confirm_password = forms.CharField(widget=forms.PasswordInput())
     class Meta:
         user = get_user_model()
         model = user
-        fields = ['username','password','first_name','last_name','email','phone']
+        fields = ['username','first_name','last_name','email','phone','password']
+        widgets = {
+            'password': forms.PasswordInput()
+        }
+    def clean(self):
+        cleaned_data = super(userReg,self).clean()
+        password = cleaned_data.get('password')
+        confirm_password = cleaned_data.get('confirm_password')
+        if(password != confirm_password):
+            raise forms.ValidationError("Both password does not matched")
 
 class voterReg(ModelForm):
     class Meta:

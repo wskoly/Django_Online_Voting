@@ -33,4 +33,5 @@ urlpatterns = [
     path('reset/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('reset/done/', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('voter_reg', views.voter_reg, name='voter_reg'),
+    path('voter_reg/done/', views.voter_reg_complete, name='voter_reg_done'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

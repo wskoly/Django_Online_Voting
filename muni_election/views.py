@@ -57,3 +57,6 @@ def voter_reg(request):
         form2 = voterReg()
     context = {'form1':form1,'form2':form2}
     return render(request,'voter_reg.html',context=context)
+
+def voter_reg_complete(request):
+    re
