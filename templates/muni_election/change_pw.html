@@ -1,0 +1,13 @@
+{% extends "muni_election/base.html" %}
+{% block title %}Change Password{% endblock %}
+{% block content %}
+<h1>{{welcome}}</h1>
+<h1>change your password</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    <table border="2">
+		{{form.as_table}}
+	</table>
+	<button type="submit">Change Password</button>
+</form>
+{% endblock %}
