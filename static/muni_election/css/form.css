@@ -12,7 +12,12 @@ h1 {
     text-align:center;
     color:#01caa7;
 }
-
+p {
+  text-align:center;
+  color:#551400;
+  margin-left: 10%;
+  margin-right: 10%;
+}
 form {
   border-top: 8px solid #01caa7;
   width: 606px;
@@ -97,44 +102,15 @@ form textarea {
 	 color: #fff;
 }
 
-form input.button {
-  width: 270px;
-  height: 40px;
-  border: 0px solid green;
-}
-
 form input.submit {
-  float: left;
-  margin-left: 200px;
-  width: 100px;
-  height: 40px;
+  font-size: 1.5em;
+  margin-left: 25%;
+  width: 50%;
+  height: 50px;
   color: #fff;
 }
 
 form input.submit:hover {
- background: #1d9676;
-	background: -webkit-linear-gradient(#1d9676, #01caa7);
-	background: -moz-linear-gradient(#1d9676, #01caa7);
-	background: -o-linear-gradient(#1d9676, #01caa7);
-	background: -ms-linear-gradient(#1d9676, #01caa7);
-	background: linear-gradient(#1d9676, #01caa7);
-}
-
-form button {
-  width: 400px;
-  height: 40px;
-  border: 2px solid red;
-}
-
-form button.submit {
-  float: left;
-  margin-left: 200px;
-  width: 100px;
-  height: 40px;
-  color: red;
-}
-
-form button.submit:hover {
  background: #1d9676;
 	background: -webkit-linear-gradient(#1d9676, #01caa7);
 	background: -moz-linear-gradient(#1d9676, #01caa7);

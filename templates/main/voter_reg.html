@@ -1,0 +1,17 @@
+{% extends 'main/base.html'%}
+{% load i18n static %}
+{%block title%}Online Election|Voter Registration{% endblock %}
+{%block content%}
+<h1>{% translate 'Voter Registration' %}</h1>
+<form method="POST">
+    <fieldset>
+    {% csrf_token %}
+        <table class="styled-table">
+        {{form1}}
+        {{form2}}
+        </table>
+        <br>
+    <input type="submit" class="submit" value="Register">
+    </fieldset>
+</form>
+{%endblock%}

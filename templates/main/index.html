@@ -1,0 +1,17 @@
+{% extends 'main/base.html'%}
+{% load i18n static %}
+{%block title%}Online Election|Index{% endblock %}
+{%block content%}
+<h1>{% trans "Welcome to the election." %}</h1>
+<p>{{mes}}</p>
+<form action="" method="POST">
+	<fieldset>
+	{% csrf_token %}
+	<table class="styled-table">
+	{{form}}
+	</table>
+		<br>
+	<input type="submit" value="Login" class="submit">
+		</fieldset>
+</form>
+{% endblock %}

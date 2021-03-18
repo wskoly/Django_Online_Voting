@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout,get_user_model
 from django.contrib.auth.decorators import login_required
 from muni_election.models import voter
 from django.forms.models import model_to_dict as mTd
+from django.utils.translation import gettext, gettext_lazy as _
 
 #index view
 def index(request):
@@ -21,7 +22,7 @@ def index(request):
     else:
         form = VoterLoginForm()
     context = {'form':form}
-    return render(request,'index.html',context)
+    return render(request,'main/index.html',context)
 
 @login_required(login_url='index')
 def vote(request):
@@ -56,7 +57,7 @@ def voter_reg(request):
         form1 = userReg()
         form2 = voterReg()
     context = {'form1':form1,'form2':form2}
-    return render(request,'voter_reg.html',context=context)
+    return render(request,'main/voter_reg.html',context=context)
 
 def voter_reg_complete(request):
-    return render(request,'voter_reg_complete.html')
+    return render(request,'main/voter_reg_complete.html')
