@@ -15,6 +15,8 @@ class voter_area(models.Model):
 
     def __str__(self):
         return self.name +"(Code:"+ self.code+")"
+    class Meta:
+        verbose_name_plural = "Voting Area Info"
 
 #voter model which also has OneToOne relation with user model
 class voter(models.Model):
@@ -30,6 +32,8 @@ class voter(models.Model):
     municipality = models.CharField(max_length=50)
     def __str__(self):
         return self.voter_id
+    class Meta:
+        verbose_name_plural = "Voters Info"
 
 #staff model
 class election_staff(models.Model):
@@ -39,6 +43,8 @@ class election_staff(models.Model):
     role = models.CharField(max_length=200, choices=role_choice)
     def __str__(self):
         return self.user
+    class Meta:
+        verbose_name_plural = "ELection Staff's Info"
 
 #election model
 class election(models.Model):
@@ -49,7 +55,9 @@ class election(models.Model):
     election_areas = models.ManyToManyField(voter_area)
 
     def __str__(self):
-        return self.election_name
+        return self.name
+    class Meta:
+        verbose_name_plural = "Election Info"
 
 class mayor_candidate(models.Model):
     election_id = models.ForeignKey(election, on_delete=models.CASCADE)
@@ -59,26 +67,35 @@ class mayor_candidate(models.Model):
     vote_count = models.IntegerField()
 
     def __str__(self):
-        return self.name+"(election_id:"+ self.election_id+")"
+        return self.name+"(election:"+ str(self.election_id)+")"
+    class Meta:
+        verbose_name_plural = "Mayor Candidates Info"
 
-class m_councilor_candidate(models.Model):
+class councilor_candidate(models.Model):
     election_id = models.ForeignKey(election, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
+    picture = models.ImageField(upload_to='candidate_pic/')
     symbol = models.ImageField(upload_to='elec_symbol/')
     ward_no = models.IntegerField()
     vote_count = models.IntegerField()
     def __str__(self):
-        return self.name+"(election_id:"+ self.election_id+")"
+        return self.name+"(election:"+ str(self.election_id)+")"
+    class Meta:
+        verbose_name_plural = "Councilors Candidate Info"
 
-class fe_councilor_candidate(models.Model):
+class re_councilor_candidate(models.Model):
     election_id = models.ForeignKey(election, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
+    picture = models.ImageField(upload_to='candidate_pic/')
     symbol = models.ImageField(upload_to='elec_symbol/')
-    start_ward = models.IntegerField()
-    end_ward = models.IntegerField()
+    reserve_ward_1 = models.IntegerField()
+    reserve_ward_2 = models.IntegerField()
+    reserve_ward_3 = models.IntegerField()
     vote_count = models.IntegerField()
     def __str__(self):
-        return self.name+"(election_id:"+ self.election_id+")"
+        return self.name+"(election:"+ str(self.election_id)+")"
+    class Meta:
+        verbose_name_plural = "Reserve Councilors Candidate Info"
 
 
 
