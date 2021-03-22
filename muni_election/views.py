@@ -33,7 +33,7 @@ def vote(request):
         print(request.POST['re_councilor'])
 
     if request.user.is_voter:
-        wc = "welcome "+request.user.first_name+" "+request.user.last_name
+        wc = "Welcome "+request.user.first_name+" "+request.user.last_name
         user = request.user
         vot = voter.objects.get(user = user)
         area = vot.area.code
@@ -46,11 +46,11 @@ def vote(request):
             re_councilors = re_councilor_candidate.objects.filter(Q(election_id=election_id) &(Q(reserve_ward_1 = ward)|Q(reserve_ward_2 = ward)|Q(reserve_ward_3 = ward)))
             if electionObj.is_open:
                 context = {'welcome':wc, 'voter':mTd(electionObj),'area':area,
-                           'mayor':mayor, 'councilors':councilors, 're_councilors':re_councilors}
+                           'mayor':mayor, 'councilors':councilors, 're_councilors':re_councilors,'has_election':True,'is_open':True}
             else:
-                context = {'welcome':"Sorry The voting has not started yet. Please wait for it to start."}
+                context = {'welcome':wc,'has_election':True,'is_open':False}
         except Exception as e:
-            context ={'welcome':"Sorry No election exist right now in your areas."}
+            context ={'welcome':wc,'has_election':False,'is_open':False}
     else:
         return redirect('index')
     return render(request,'muni_election/vote.html',context=context)
