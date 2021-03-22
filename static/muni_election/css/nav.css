@@ -1,28 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap');
+@font-face {
+  font-family: 'get_out_the_voteregular';
+  src: url('getoutthevote-1dwz-webfont.woff2') format('woff2'),
+       url('getoutthevote-1dwz-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'top_secretregular';
+  src: url('top_secret-webfont.woff2') format('woff2'),
+       url('top_secret-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'sergeant_rockregular';
+  src: url('sergeant_rock-webfont.woff2') format('woff2'),
+       url('sergeant_rock-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
 body {
-  margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.7) 100%) , url(../cover/ovs_cover.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+  background-color: transparent;
+  z-index: -1;
 }
-
-.topnav {
-  overflow: hidden;
-  background-color: #333;
+.responsive-bar{
+  display: none;
 }
-
-.topnav a {
+nav{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100px;
+  padding: 10px 50px;
+  box-sizing: border-box;
+  transition: .5s;
+  z-index: 3;
+}
+nav.black{
+  background: rgba(0,0,0,0.8);
+  height: 80px;
+  padding: 10px 15px;
+}
+nav .logo{
   float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
+}
+nav .logo img{
+  margin-top: 8px;
+  height: 200px;
+  transition: .5s;
+}
+nav.black .logo img{
+  margin-top: 5px;
+  height: 60px;
+}
+nav > ul{
+  width: 80%;
+  margin: 0 auto;
+  padding: 0;
+  float: right;
+}
+nav > ul > li{
+  list-style: none;
+  display: inline-block;
+  font-family: 'sergeant_rockregular';
+  font-size:1vw;
+  border: 0px;
+  border-radius: 10px;
+
+}
+nav > ul > li > a:hover{
+  background: #c20000;
+  color: #fff;
+  border: 2px solid #c20000;
+  padding: 10px;
+  border-radius: 50px 20px;
+}
+nav > ul > li > a{
+  color: #262626;
   text-decoration: none;
-  font-size: 17px;
+  text-transform: uppercase; /*for capitalisation of letters */
+  line-height: 80px;
+  padding: 5px 20px;
+  transition: .5s;   
+}
+nav.black > ul > li > a{
+  color: #fff;
+  line-height: 60px;
 }
 
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
+section.sec1{
+  width: 100%;
+  height: 200px;
+  background:/*linear-gradient(to bottom, rgba(238,174,202, 0.7) 0%,rgba(148,187,233, 0.7) 100%),*/ url(../banner/banner_ovs.png);
+  background-size: 100% 200px;
+  /*border-bottom: 10px solid #01caa7;*/
+}
+.bannerTitle{
+  font-family:'get_out_the_voteregular' ;
+  text-align: center;
+  position: relative; 
+  color:red; 
+  font-size: 4em; 
+  font-weight: bold;
+  top:50%; 
+  left: 50%; 
+  transform: translateX(-50%) translateY(-50%);
 }
 
-.topnav a.active {
-  background-color: #4CAF50;
-  color: white;
+.header{
+  position: relative; 
+  top:50%; 
+  left: 50%; 
+  transform: translateX(-50%) translateY(-50%);
+}
+.header .Title{
+  font-family: 'Saira Stencil One', cursive;
+  text-align: center;
+  color:rgb(255, 0, 0); 
+  font-size: 5.5vw; 
+  font-weight: bold;
+  text-shadow: 0 1px 0 #6e0700, 0 2px 0 #6e0700, 0 3px 0 #6e0700, 
+                 0 4px 0 #6e0700, 0 5px 0 #6e0700, 0 6px 0 #6e0700;
+  /*text-shadow: 0 1px 0 #fff, 0 2px 0 #fff, 0 3px 0 #fff, 
+                 0 4px 0 #fff, 0 5px 0 #fff, 0 6px 0 #fff,
+                 -2px 2px 20px rgba(0,0,0,.5),
+                  0 7px 0 #fff, 0 8px 0 #fff, 0 9px 0 #fff, 
+                  0 10px 0 #fff, 0 11px 0 #fff, 0 12px 0 #fff;*/
+}
+
+.header .leftImage img{
+ float:left;
+ height: 100px;
+ margin-left: 20px;
+}
+.header .rightImage img{
+  float: right;
+  height: 100px;
+  margin-right: 20px;
+}
+
+.secborder{
+  height:20px;
+  width:100%;
+  background:#00927a;
+  z-index:-1;
+  position: relative;
+}
+.secborder:after{
+	content:'';
+  top:0;
+	transform:translateX(100%);
+	width:100%;
+	height:20px;
+	position: absolute;
+	z-index:0;
+	animation: slide 5s infinite;
+	 
+  background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(128,186,232,0) 99%, rgba(125,185,232,0) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0)), color-stop(50%,rgba(255,255,255,0.8)), color-stop(99%,rgba(128,186,232,0)), color-stop(100%,rgba(125,185,232,0))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,0.8) 50%,rgba(128,186,232,0) 99%,rgba(125,185,232,0) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,0.8) 50%,rgba(128,186,232,0) 99%,rgba(125,185,232,0) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,0.8) 50%,rgba(128,186,232,0) 99%,rgba(125,185,232,0) 100%); /* IE10+ */
+	background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,0.8) 50%,rgba(128,186,232,0) 99%,rgba(125,185,232,0) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#007db9e8',GradientType=1 ); /* IE6-9 */
+}
+
+/* animation */
+
+@keyframes slide {
+	0% {transform:translateX(-100%);}
+	100% {transform:translateX(100%);}
+}
+
+section.content{
+  margin: 0;
+  padding: 0;
+  font-size: 1.1em;
+}
+section.sec2{
+  width: 100%;
+  height: 100vh;
+  background: url(https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+  background-size: cover;
+}
+@media(max-width:1080px){
+  nav .logo img{
+    margin-top: 28px;
+    height: 180px;
+    transition: .5s;
+  }
+}
+
+@media(max-width:924px){
+  nav .logo img{
+    margin-top: 48px;
+    height: 160px;
+    transition: .5s;
+  }
+}
+
+@media(max-width:830px){
+  .responsive-bar{
+      display: block;
+      width: 100%;
+      height: 60px;
+      background: #262626;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 5px 20px;
+      box-sizing: border-box;
+      z-index: 4;
+  }
+  .responsive-bar .logo img{
+      float: left;
+      height: 50px;  
+  }
+  .responsive-bar .title h4{
+    position:relative;
+    float:left;
+    left:5px;
+    font-family: 'top_secretregular';
+    font-size: 4vw;
+    color: rgb(160, 1, 1);
+    margin: 0;
+    padding: 0;
+    line-height: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+  .responsive-bar .menu h4{
+      float: right;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      line-height: 50px;
+      cursor: pointer;
+      text-transform: uppercase;
+  }
+  nav{
+      padding: 0;
+  }
+  nav,
+  nav.black{
+  background: #262626;
+  height: 60px;
+  padding: 0;
+  }
+  nav .logo{
+      display: none;
+  }
+  nav ul{
+      position: absolute;
+      width: 100%;
+      top: 60px;
+      left: 0;
+      background: #262626;
+      float: none;
+      display: none;
+  }
+  nav ul.active{
+      display: block;
+  }
+  nav ul li{
+      width: 100%;
+  }
+  nav ul li a{
+      display: block;
+      padding: 0;
+      width: 100%;
+      text-align: center;
+      line-height: 30px !important;
+      color: #fff;
+      
+  }
+
+  nav > ul{
+      width: 100%;
+      display: none;
+  }
+  nav > ul > li{
+      display: block;
+      text-align: center;
+  }
+  .active{
+      display: block;
+  }
+}
+
+/* Loader */
+.loader {
+  background: #050115;
+  opacity: 0.95;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  overflow: hidden;
+  z-index: 9999;
+}
+.spinner {
+  width: 10em;
+  height: 10em;
+  border-top: 1em solid #d5fff7;
+  border-right: 1em solid transparent;
+  animation: spinner 0.4s linear infinite;
+  border-radius: 50%;
+  margin: auto;
+  z-index: 10000;
+}
+.head {
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  margin-left: 8.5em;
+  margin-top: 0.5em;
+  background-color: #d5fff7;
+  z-index: 99999;
+}
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
 }
