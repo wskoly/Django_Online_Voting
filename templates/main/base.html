@@ -1,12 +1,33 @@
 {% load i18n static %}
 <!DOCTYPE html>
 <html>
+
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{%block title%}{% endblock %}</title>
 	<link rel="stylesheet" href="{% static 'muni_election/css/form.css' %}">
+	<link rel="stylesheet" href="{% static 'muni_election/css/nav.css' %}">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
+
 <body>
-{% block content %}
-{% endblock %}
+	<div class="loader" id="loader">
+		<div class="spinner" style=font-size:16px>
+			<div class="head">
+			</div>
+		</div>
+	</div>
+	<section class="sec1">
+		<div class="header">
+			<div class="leftImage"><img src="{% static 'muni_election/logo/ovs_logo.png'%}" alt="logo" /></div>
+			<div class="rightImage"><img src="{% static 'muni_election/logo/ovs_logo.png'%}" alt="logo" /></div>
+			<div class="Title">ONLINE ELECTION PLATFORM</div>
+		</div>
+	</section>
+	<div class="secborder"></div>
+	{% block content %}
+	{% endblock %}
+	<script src="{% static 'muni_election/js/loader.js' %}"></script>
 </body>
+
 </html>
