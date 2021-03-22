@@ -9,12 +9,13 @@ body {
 }
 
 h1 {
+  font-family: 'top_secretregular';
     text-align:center;
     color:#01caa7;
 }
 p {
   text-align:center;
-  color:#551400;
+  color:rgb(255, 255, 255);
   margin-left: 10%;
   margin-right: 10%;
 }
@@ -41,12 +42,12 @@ form div {
 form label {
   float: left;
   width: 200px;
-  font-size: 1em;
+  font-size: .7em;
   color: #111;
 }
 
 form label.mid {
-  line-height: 40px;
+  line-height: 20px;
 }
 
 form input, form select {
@@ -56,9 +57,9 @@ form input, form select {
 	font-family: 'PT Sans Caption', sans-serif;
 	font-size: 1em;
 	font-weight: 400;
-	height: 40px;
+	height: 30px;
 	margin: 0;
-	padding: 0 10px;
+	padding: 0 2px;
 	width: 240px;
  vertical-align: middle;
 }
@@ -74,7 +75,7 @@ form input:focus, form select:focus, form textarea:focus {
 
 form select {
   float: left;
-  margin-bottom: 40px;
+  margin-bottom: 2px;
   appearance: none;
   width: 260px;
   border-radius: 0;
@@ -96,18 +97,22 @@ form input.button {
 form textarea {
   width: 240px;
   height: 200px;
-  padding: 10px;
+  padding: 2px;
   background: #01caa7;
 	 border: 2px solid #fff;
 	 color: #fff;
 }
 
 form input.submit {
+  margin-top: 30px;
+  margin-bottom: 30px;
   font-size: 1.5em;
   margin-left: 25%;
   width: 50%;
   height: 50px;
   color: #fff;
+  border: 2px solid #07684e;
+  border-radius: 40px;
 }
 
 form input.submit:hover {
@@ -117,6 +122,34 @@ form input.submit:hover {
 	background: -o-linear-gradient(#1d9676, #01caa7);
 	background: -ms-linear-gradient(#1d9676, #01caa7);
 	background: linear-gradient(#1d9676, #01caa7);
+  border: 2px solid #07684e;
+  padding: 10px;
+  border-radius: 50px 20px;
+}
+
+input.button {
+  width: 270px;
+  height: 40px;
+  border: 0px solid green;
+}
+
+input.submit {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 1.5em;
+  margin-left: 25%;
+  width: 20%;
+  height: 50px;
+  color: #fff;
+}
+
+input.submit:hover {
+ background: #1d9676;
+  background: -webkit-linear-gradient(#1d9676, #01caa7);
+  background: -moz-linear-gradient(#1d9676, #01caa7);
+  background: -o-linear-gradient(#1d9676, #01caa7);
+  background: -ms-linear-gradient(#1d9676, #01caa7);
+  background: linear-gradient(#1d9676, #01caa7);
 }
 
 .styled-table {
@@ -124,8 +157,8 @@ form input.submit:hover {
   margin: auto 0;
   font-size: 0.9em;
   font-family: sans-serif;
-  min-width: 300px;
-  max-width: 380px;
+  min-width: 30%;
+  max-width: 100%;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 .styled-table thead tr {
@@ -133,16 +166,28 @@ form input.submit:hover {
   color: #ffffff;
   text-align: left;
 }
-.styled-table th,
+.styled-table th{
+  color:#D5DDE5;;
+  background:#01caa7;
+  font-size:23px;
+  font-weight: 100;
+  padding:12px;
+  text-align:center;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
 .styled-table td {
-  padding: 12px 15px;
+  padding: 8px 11px;
 }
 .styled-table tbody tr {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 2px solid #dddddd;
 }
 
 .styled-table tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
+}
+.styled-table tbody tr:nth-of-type(odd) {
+  background-color: #dad6d6;
 }
 
 .styled-table tbody tr:last-of-type {
