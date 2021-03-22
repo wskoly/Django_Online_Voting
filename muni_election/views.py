@@ -2,13 +2,14 @@ from django.shortcuts import render,redirect
 from .forms import VoterLoginForm,userReg,voterReg
 from django.contrib.auth import authenticate, login, logout,get_user_model
 from django.contrib.auth.decorators import login_required
-from muni_election.models import voter
+from muni_election.models import *
 from django.forms.models import model_to_dict as mTd
+from django.db.models import Q
 from django.utils.translation import gettext, gettext_lazy as _
 
 #index view
 def index(request):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and request.user.is_voter:
         return redirect('vote')
     if request.method == 'POST':
         form = VoterLoginForm(data=request.POST)
@@ -26,14 +27,37 @@ def index(request):
 
 @login_required(login_url='index')
 def vote(request):
-    wc = "welcome "+request.user.first_name+" "+request.user.last_name
-    user = request.user
-    vot = voter.objects.get(user = user)
-    context = {'welcome':wc, 'voter':mTd(vot)}
+    if request.method == 'POST':
+        print(request.POST['mayor'])
+        print(request.POST['councilor'])
+        print(request.POST['re_councilor'])
+
+    if request.user.is_voter:
+        wc = "welcome "+request.user.first_name+" "+request.user.last_name
+        user = request.user
+        vot = voter.objects.get(user = user)
+        area = vot.area.code
+        ward = vot.ward
+        try:
+            election_id = election.election_areas.through.objects.get(voter_area_id=area).election_id
+            electionObj = election.objects.get(pk=election_id)
+            mayor = mayor_candidate.objects.filter(election_id=election_id)
+            councilors = councilor_candidate.objects.filter(Q(election_id=election_id) & Q(ward_no =ward))
+            re_councilors = re_councilor_candidate.objects.filter(Q(election_id=election_id) &(Q(reserve_ward_1 = ward)|Q(reserve_ward_2 = ward)|Q(reserve_ward_3 = ward)))
+            if electionObj.is_open:
+                context = {'welcome':wc, 'voter':mTd(electionObj),'area':area,
+                           'mayor':mayor, 'councilors':councilors, 're_councilors':re_councilors}
+            else:
+                context = {'welcome':"Sorry The voting has not started yet. Please wait for it to start."}
+        except Exception as e:
+            context ={'welcome':"Sorry No election exist right now in your areas."}
+    else:
+        return redirect('index')
     return render(request,'muni_election/vote.html',context=context)
 @login_required(login_url='index')
 def standings(request):
     return render(request,'muni_election/standings.html')
+
 @login_required(login_url='index')
 def voter_logout(request):
     logout(request)
