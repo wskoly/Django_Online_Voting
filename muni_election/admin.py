@@ -14,6 +14,14 @@ class adminUser(BaseUserAdmin):
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
     )
 
+class MayorAdmin(admin.ModelAdmin):
+    exclude = ('vote_count',)
+
+class CouncilorAdmin(admin.ModelAdmin):
+    exclude = ('vote_count',)
+
+class ReCouncilorAdmin(admin.ModelAdmin):
+    exclude = ('vote_count',)
 #change admin panel
 admin.site.site_header = "Online Voting Administration"
 admin.site.site_title = "Online Voting Admin"
@@ -24,6 +32,6 @@ admin.site.register(voter)
 admin.site.register(voter_area)
 admin.site.register(election_staff)
 admin.site.register(election)
-admin.site.register(mayor_candidate)
-admin.site.register(councilor_candidate)
-admin.site.register(re_councilor_candidate)
+admin.site.register(mayor_candidate, MayorAdmin)
+admin.site.register(councilor_candidate,CouncilorAdmin)
+admin.site.register(re_councilor_candidate,ReCouncilorAdmin)
