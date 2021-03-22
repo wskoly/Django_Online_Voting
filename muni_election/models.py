@@ -64,7 +64,7 @@ class mayor_candidate(models.Model):
     name = models.CharField(max_length=200)
     picture = models.ImageField(upload_to = 'candidate_pic/')
     symbol = models.ImageField(upload_to='elec_symbol/')
-    vote_count = models.IntegerField()
+    vote_count = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name+"(election:"+ str(self.election_id)+")"
@@ -77,7 +77,7 @@ class councilor_candidate(models.Model):
     picture = models.ImageField(upload_to='candidate_pic/')
     symbol = models.ImageField(upload_to='elec_symbol/')
     ward_no = models.IntegerField()
-    vote_count = models.IntegerField()
+    vote_count = models.IntegerField(default=0)
     def __str__(self):
         return self.name+"(election:"+ str(self.election_id)+")"
     class Meta:
@@ -91,11 +91,22 @@ class re_councilor_candidate(models.Model):
     reserve_ward_1 = models.IntegerField()
     reserve_ward_2 = models.IntegerField()
     reserve_ward_3 = models.IntegerField()
-    vote_count = models.IntegerField()
+    vote_count = models.IntegerField(default=0)
     def __str__(self):
         return self.name+"(election:"+ str(self.election_id)+")"
     class Meta:
         verbose_name_plural = "Reserve Councilors Candidate Info"
+
+class vote_store(models.Model):
+    voter_hash = models.CharField(max_length=128)
+    election_id = models.ForeignKey(election, on_delete=models.CASCADE)
+    mayor_candidate = models.ForeignKey(mayor_candidate, on_delete=models.CASCADE)
+    councilor_candidate = models.ForeignKey(councilor_candidate, on_delete=models.CASCADE)
+    re_councilor_candidate = models.ForeignKey(re_councilor_candidate, on_delete=models.CASCADE)
+
+class is_voted(models.Model):
+    election_id = models.ForeignKey(election, on_delete=models.CASCADE)
+    user = models.ForeignKey(user,on_delete=models.CASCADE)
 
 
 
