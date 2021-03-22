@@ -4,12 +4,11 @@
 <h1>change your password</h1>
 <form action="" method="POST">
 	<fieldset>
-    {% csrf_token %}
-    <table class="styled-table">
-		{{form}}
-	</table>
-	<br>
-	<input type="submit" class="submit" value="change password">
-</fieldset>
+		{% csrf_token %}
+		<table class="styled-table">
+			{{form.as_table}}
+		</table>
+		<input type="submit" class="submit" value="change password">
+	</fieldset>
 </form>
 {% endblock %}
