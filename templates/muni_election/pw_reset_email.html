@@ -1,57 +1,89 @@
-{% load i18n %}{% autoescape off %}
+{% load i18n static %}{% autoescape off %}
 <!doctype html>
-<html lang="bn-BD">
+<html lang="en-us">
 
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-    <title>Reset Password for Adiba's Online Voting</title>
+    <title>Password reset for Online Election Platform</title>
     <meta name="description" content="Reset Password Email Template.">
     <style type="text/css">
-        a:hover {text-decoration: underline !important;}
+    @import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Charm:wght@700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap'); 
+        body{
+            font-family: 'Berkshire Swash', cursive;
+        }
+        a:hover {
+            text-decoration: underline !important;
+        }
+
+        .Title {
+            font-family: 'Saira Stencil One', cursive;
+            text-align: center;
+            color: red;
+            font-size: 3em;
+            text-shadow: 0 1px 0 #6e0700, 0 2px 0 #6e0700, 0 3px 0 #6e0700,
+                0 4px 0 #6e0700, 0 5px 0 #6e0700, 0 6px 0 #6e0700;
+        }
+        .container{
+            background: yellow;
+        }
     </style>
 </head>
 
 <body marginheight="0" topmargin="0" marginwidth="0" style="margin: 0px; background-color: #f2f3f8;" leftmargin="0">
     <!--100% body table-->
-    <table cellspacing="0" border="0" cellpadding="0" width="100%" bgcolor="#f2f3f8"
-        style="@import url(https://fonts.googleapis.com/css?family=Rubik:300,400,500,700|Open+Sans:300,400,600,700); font-family: 'Open Sans', sans-serif;">
+    <table cellspacing="0" border="0" cellpadding="0" width="100%" bgcolor="#f2f3f8">
         <tr>
             <td>
                 <table style="background-color: #f2f3f8; max-width:670px;  margin:0 auto;" width="100%" border="0"
                     align="center" cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td style="height:80px;">&nbsp;</td>
+                    <!--<tr>
+                        <td style="height:40px;">&nbsp;</td>
                     </tr>
                     <tr>
                         <td style="text-align:center;">
-                          <a href="https://wskoly.ml" title="logo" target="_blank">
-                            <img width="60" src="https://i.ibb.co/hL4XZp2/android-chrome-192x192.png" title="logo" alt="logo">
-                          </a>
+                            <a href="{{ protocol }}://{{ domain }}" title="logo" target="_blank">
+                                <img width="150px" src="https://i.ibb.co/hKN1mRk/ovs-logo.png" alt="ovs-logo">
+                            </a>
                         </td>
                     </tr>
-                    <tr>
+                     <tr>
                         <td style="height:20px;">&nbsp;</td>
+                    </tr>-->
+                    <tr>
+                        <td class="Title">
+                            ONLINE ELECTION PLATFORM
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0"
-                                style="max-width:670px;background:#fff; border-radius:3px; text-align:center;-webkit-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);-moz-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);box-shadow:0 6px 18px 0 rgba(0,0,0,.06);">
+                                style="max-width:670px;
+                                background:linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.7) 100%) , url(https://i.ibb.co/NpJ3HVw/email-back.jpg); 
+                                background-size: 670px; background-position: center; background-repeat: no-repeat; border-radius:3px; text-align:center;-webkit-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);-moz-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);box-shadow:0 6px 18px 0 rgba(0,0,0,.06);">
+                                <div class="container">
                                 <tr>
                                     <td style="height:40px;">&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td style="padding:0 35px;">
-                                        <h1 style="color:#1e1e2d; font-weight:500; margin:0;font-size:32px;font-family:'Rubik',sans-serif;">You have
-                                            requested to reset your password at Online Election Platform</h1>
+                                        <h1
+                                            style="color:#ffffff; font-weight:500; margin:0;font-size:32px;">
+                                            You have
+                                            requested to set or reset your password at Online Election Platform</h1>
                                         <span
                                             style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;"></span>
-                                        <p style="color:#455056; font-size:15px;line-height:24px; margin:0;">
-                                            We cannot simply send you your old password. A unique link to reset your
+                                        <p style="color:rgb(255, 255, 6); font-size:18px;line-height:24px; margin:0; font-family: 'Charm', cursive;">
+                                            To set or reset your password, a unique link to reset your
                                             password has been generated for you. To reset your password, click the
-                                            following link and follow the instructions.
+                                            following link and follow the instructions. The link is valid for single
+                                            time uses.
+                                            If you fail to reset your password you need to request again for a new reset
+                                            link.
                                         </p>
                                         <a href="{{ protocol }}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}"
-                                            style="background:#20e277;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">Reset
+                                            style="background:#d30202;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;font-family: 'Charm', cursive;">Reset
                                             Password</a>
                                     </td>
                                 </tr>
@@ -65,7 +97,9 @@
                     </tr>
                     <tr>
                         <td style="text-align:center;">
-                            <p style="font-size:14px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;">&copy; <strong>Homaira Adiab</strong></p>
+                            <p
+                                style="font-size:14px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;">
+                                &copy; <strong>Homaira Adiba</strong></p>
                         </td>
                     </tr>
                     <tr>
