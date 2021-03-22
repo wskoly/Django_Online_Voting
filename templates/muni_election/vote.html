@@ -1,7 +1,125 @@
 {% extends "muni_election/base.html" %}
+{%load static %}
 {% block title %}Caste Vote{% endblock %}
 {% block content %}
 <h1>{{welcome}}</h1>
 <h1>Cast your vote</h1>
-<h2>{{voter}}</h2>
+<!--<h2>{{voter}}</h2>
+<h2>{{area}}</h2>-->
+<h1>Mayor Candidate</h1>
+<form action method="POST">
+    {% csrf_token %}
+    <table class="styled-table">
+        <th>Name</th>
+        <th>Image</th>
+        <th>Symbol</th>
+        <th>Vote</th>
+        {% for m in mayor%}
+        <tr>
+            <td style="text-align: center;">
+                <h2>{{m.name}}</h2>
+            </td>
+            <td><img src="{{MEDIA_URL}}{{m.picture}}" width="100" height="100"></td>
+            <td><img src="{{MEDIA_URL}}{{m.symbol}}" width="100" height="100"></td>
+            <td>
+                <div class="ratings">
+                    <label class="rating-item">
+                        <input type="radio" name="mayor" value="{{m.id}}" required>
+                        <div class="rating-box">
+                            <span class="rating-score">
+                                <img src="{{MEDIA_URL}}{{m.symbol}}" height="90" width="90">
+                            </span>
+                        </div>
+                    </label>
+                </div>
+            </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h1>Councilors</h1>
+    <table class="styled-table">
+        <th>Name</th>
+        <th>Image</th>
+        <th>Symbol</th>
+        <th>Vote</th>
+        {% for m in councilors%}
+        <tr>
+            <td style="text-align: center;">
+                <h2>{{m.name}}</h2>
+            </td>
+            <td><img src="{{MEDIA_URL}}{{m.picture}}" width="100" height="100"></td>
+            <td><img src="{{MEDIA_URL}}{{m.symbol}}" width="100" height="100"></td>
+            <td>
+                <div class="ratings">
+                    <label class="rating-item">
+                        <input type="radio" name="councilor" value="{{m.id}}" required>
+                        <div class="rating-box">
+                            <span class="rating-score">
+                                <img src="{{MEDIA_URL}}{{m.symbol}}" height="90" width="90">
+                            </span>
+                        </div>
+                    </label>
+                </div>
+            </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h1>Reserve Councilors</h1>
+    <table class="styled-table">
+        <th>Name</th>
+        <th>Image</th>
+        <th>Symbol</th>
+        <th>Vote</th>
+        {% for m in re_councilors%}
+        <tr>
+            <td style="width: 30%; text-align: center;">
+                <h2>{{m.name}}</h2>
+            </td>
+            <td><img src="{{MEDIA_URL}}{{m.picture}}" width="100" height="100"></td>
+            <td><img src="{{MEDIA_URL}}{{m.symbol}}" width="100" height="100"></td>
+            <td>
+                <div class="ratings">
+                    <label class="rating-item">
+                        <input type="radio" name="re_councilor" value="{{m.id}}" required>
+                        <div class="rating-box">
+                            <span class="rating-score">
+                                <img src="{{MEDIA_URL}}{{m.symbol}}" height="90" width="90">
+                            </span>
+                        </div>
+                    </label>
+                </div>
+            </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    <input type="submit" class="submit" value="VOTE">
+</form>
+<script type="text/javascript">
+    $(document).ready(function () {
+        console.log("function");
+        $("input[type='submit']").click(function () {
+            console.log("function clicked");
+            var mayor = $("input[name='mayor']:checked").val();
+            var councilor = $("input[name='councilor']:checked").val();
+            var re_councilor = $("input[name='re_councilor']:checked").val();
+            if((!mayor && !councilor)|(!mayor && !re_councilor)|(!councilor && !re_councilor)|(!mayor && !councilor && !re_councilor)){
+                alert("No blank vote is accepted.");
+            }
+            else if (!mayor) {
+                alert("You haven't vote for any  mayor.");
+            }
+            else if (!councilor) {
+                alert("You haven't vote for any councilor.");
+            }
+            else if (!re_councilor) {
+                alert("You haven't vote for any reserve councilor.");
+            }
+        });
+    });
+</script>
 {% endblock %}
