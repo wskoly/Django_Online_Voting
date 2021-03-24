@@ -1,7 +1,9 @@
 {% extends 'main/base.html'%}
 {%block title%}Online Election|Reset Done{% endblock %}
 {% block content %}
-<h1>Password set/reset has been done successfully!</h1>
+<table class="notice">
+    <td>Password set/reset has been done successfully!</td>
+    </table>
 <p>Your password has been set. You may go ahead and <a href="{% url 'index' %}">log in</a> now.
 </p>
 {% endblock %}
