@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('vote/', views.vote, name='vote'),
+    path('vote/done/', views.vote_done, name='vote_done'),
     path('standings/', views.standings, name='standings'),
     path('logout/', views.voter_logout, name='logout'),
     path('password_change/', PasswordChangeView.as_view(success_url ='done', template_name= 'muni_election/change_pw.html'), name='change_password'),
