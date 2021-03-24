@@ -22,6 +22,11 @@ class CouncilorAdmin(admin.ModelAdmin):
 
 class ReCouncilorAdmin(admin.ModelAdmin):
     exclude = ('vote_count',)
+
+class vote_st(admin.ModelAdmin):
+    readonly_fields = ['voter_hash','election_id', 'mayor_candidate', 'councilor_candidate', 're_councilor_candidate']
+class voted(admin.ModelAdmin):
+    readonly_fields = ['election_id','user']
 #change admin panel
 admin.site.site_header = "Online Voting Administration"
 admin.site.site_title = "Online Voting Admin"
@@ -35,3 +40,5 @@ admin.site.register(election)
 admin.site.register(mayor_candidate, MayorAdmin)
 admin.site.register(councilor_candidate,CouncilorAdmin)
 admin.site.register(re_councilor_candidate,ReCouncilorAdmin)
+admin.site.register(vote_store,vote_st)
+admin.site.register(is_voted,voted)
