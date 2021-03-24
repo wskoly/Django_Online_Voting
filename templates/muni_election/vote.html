@@ -6,7 +6,7 @@
 <h1>Cast your vote</h1>
 <!--<h2>{{voter}}</h2>
 <h2>{{area}}</h2>-->
-{% if has_election and is_open %}
+{% if has_election and is_open and is_voted == False %}
 <h1>Mayor Candidate</h1>
 <form action method="POST">
     {% csrf_token %}
@@ -100,10 +100,18 @@
     </table>
     <input type="submit" class="submit" value="VOTE">
 </form>
-{% elif has_election and is_open == False %}
-<h1>Sorry The voting has not started yet. Please wait for it to start.</h1>
+{% elif has_election and is_open == False and is_voted == False %}
+<table class="notice">
+    <td>Sorry The voting has not started yet. Please wait for it to start.</td>
+</table>
+{% elif has_election and is_voted == True %}
+<table class="notice">
+    <td>You have voted already. Thank you for your participation.</td>
+</table>
 {%else%}
-<h1>Sorry No election exist right now in your areas.</h1>
+<table class="notice">
+    <td>Sorry No election exist right now in your areas.</td>
+</table>
 {%endif%}
 <script type="text/javascript">
     $(document).ready(function () {
