@@ -98,15 +98,15 @@ class re_councilor_candidate(models.Model):
         verbose_name_plural = "Reserve Councilors Candidate Info"
 
 class vote_store(models.Model):
-    voter_hash = models.CharField(max_length=128)
-    election_id = models.ForeignKey(election, on_delete=models.CASCADE)
-    mayor_candidate = models.ForeignKey(mayor_candidate, on_delete=models.CASCADE)
-    councilor_candidate = models.ForeignKey(councilor_candidate, on_delete=models.CASCADE)
-    re_councilor_candidate = models.ForeignKey(re_councilor_candidate, on_delete=models.CASCADE)
+    voter_hash = models.CharField(max_length=128, editable=False)
+    election_id = models.ForeignKey(election, on_delete=models.CASCADE, editable=False)
+    mayor_candidate = models.ForeignKey(mayor_candidate, on_delete=models.CASCADE, editable=False)
+    councilor_candidate = models.ForeignKey(councilor_candidate, on_delete=models.CASCADE, editable=False)
+    re_councilor_candidate = models.ForeignKey(re_councilor_candidate, on_delete=models.CASCADE, editable=False)
 
 class is_voted(models.Model):
-    election_id = models.ForeignKey(election, on_delete=models.CASCADE)
-    user = models.ForeignKey(user,on_delete=models.CASCADE)
+    election_id = models.ForeignKey(election, on_delete=models.CASCADE, editable=False)
+    user = models.ForeignKey(user,on_delete=models.CASCADE, editable=False)
 
 
 
