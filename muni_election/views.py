@@ -76,7 +76,7 @@ def vote(request):
                     councilors = councilor_candidate.objects.filter(Q(election_id=election_id) & Q(ward_no =ward))
                     re_councilors = re_councilor_candidate.objects.filter(Q(election_id=election_id) &(Q(reserve_ward_1 = ward)|Q(reserve_ward_2 = ward)|Q(reserve_ward_3 = ward)))
                     if electionObj.is_open:
-                        context = {'welcome':wc, 'voter':mTd(electionObj),'area':area,
+                        context = {'welcome':wc, 'voter':mTd(electionObj),'area':area, 'election':electionObj.name,
                                    'mayor':mayor, 'councilors':councilors, 're_councilors':re_councilors,'has_election':True,'is_open':True, 'is_voted':False}
                     else:
                         context = {'welcome':wc,'has_election':True,'is_open':False, 'is_voted':False}
@@ -107,6 +107,7 @@ def standings(request):
             re_ward2 =re_c_Obj.reserve_ward_2
             re_ward3 = re_c_Obj.reserve_ward_3
 
+            standing_header = election.objects.get(pk=election_id).name+" Standings"
             #Total Vote casted for mayor on that particular election
             mayor_total = is_voted.objects.filter(election_id=election_id).count()
 
@@ -118,7 +119,7 @@ def standings(request):
             mayors = mayor_candidate.objects.filter(election_id=election_id)
             councilors = councilor_candidate.objects.filter(Q(election_id=election_id) & Q(ward_no=ward))
             re_councilors = re_councilor_candidate.objects.filter(Q(election_id=election_id) & (Q(reserve_ward_1=ward) | Q(reserve_ward_2=ward) | Q(reserve_ward_3=ward)))
-            context = {'wc':wc, 'has_election': True, 'mayors':mayors, 'councilors':councilors, 're_councilors':re_councilors, 'mayor_total':mayor_total, 'councilor_total':councilor_total, 're_councilor_total':re_councilor_total}
+            context = {'wc':wc, 'standing_header':standing_header, 'has_election': True, 'mayors':mayors, 'councilors':councilors, 're_councilors':re_councilors, 'mayor_total':mayor_total, 'councilor_total':councilor_total, 're_councilor_total':re_councilor_total}
         else:
             context = {'wc': wc, 'has_election': False}
     else:
