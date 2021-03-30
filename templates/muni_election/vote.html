@@ -7,6 +7,9 @@
 <!--<h2>{{voter}}</h2>
 <h2>{{area}}</h2>-->
 {% if has_election and is_open and is_voted == False %}
+<table class="notice">
+    <td>{{election}}</td>
+</table>
 <h1>{% translate "Mayor Candidates" %}</h1>
 <form action method="POST">
     {% csrf_token %}
