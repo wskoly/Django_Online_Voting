@@ -75,10 +75,20 @@ class election(models.Model):
         verbose_name_plural = _("Election Info")
 
 class mayor_candidate(models.Model):
+    symbol_choices = (('elec_symbol/mayor/nouka.png', _('Nouka')),
+                     ('elec_symbol/mayor/dhaner_shish.png', _('Dhaner Shish')),
+                     ('elec_symbol/mayor/langol.png', _('Langol')),
+                     ('elec_symbol/mayor/anarash.png', _('Anarash')),
+                     ('elec_symbol/mayor/chaka.png', _('Chaka')),
+                     ('elec_symbol/mayor/chata.png', _('Chata')),
+                     ('elec_symbol/mayor/kaste.png', _('Kaste')),
+                     ('elec_symbol/mayor/moi.png', _('Moi')),
+                     ('elec_symbol/mayor/moshal.png', _('Moshal')),
+                     )
     election_id = models.ForeignKey(election, verbose_name=_('ELection'), on_delete=models.CASCADE)
     name = models.CharField(verbose_name=_('Candidate Name'),max_length=200)
     picture = models.ImageField(verbose_name=_('Candidate Picture'),upload_to = 'candidate_pic/')
-    symbol = models.ImageField(verbose_name=_('Candidate Symbol'),upload_to='elec_symbol/')
+    symbol = models.ImageField(verbose_name=_('Candidate Symbol'), choices=symbol_choices)
     vote_count = models.IntegerField(verbose_name=_('Candidate Vote Count'),default=0)
 
     def __str__(self):
@@ -87,10 +97,16 @@ class mayor_candidate(models.Model):
         verbose_name_plural = _("Mayor Candidates Info")
 
 class councilor_candidate(models.Model):
+    symbol_choices = (('elec_symbol/councilor/austrich.png', _('Uut Pakhi')),
+                      ('elec_symbol/councilor/dalim.png', _('Dalim')),
+                      ('elec_symbol/councilor/lamp.png', _('Table Lamp')),
+                      ('elec_symbol/councilor/screw_driver.png', _('Screw Driver')),
+                      ('elec_symbol/councilor/water_bottle.png', _('Water Bottle')),
+                      )
     election_id = models.ForeignKey(election,verbose_name=_('ELection'), on_delete=models.CASCADE)
     name = models.CharField(verbose_name=_('Candidate Name'),max_length=200)
     picture = models.ImageField(verbose_name=_('Candidate Picture'),upload_to='candidate_pic/')
-    symbol = models.ImageField(verbose_name=_('Candidate Symbol'),upload_to='elec_symbol/')
+    symbol = models.ImageField(verbose_name=_('Candidate Symbol'), choices=symbol_choices)
     ward_no = models.IntegerField(verbose_name=_('Candidate Ward'))
     vote_count = models.IntegerField(default=0)
     def __str__(self):
@@ -99,10 +115,16 @@ class councilor_candidate(models.Model):
         verbose_name_plural = _("Councilors Candidate Info")
 
 class re_councilor_candidate(models.Model):
+    symbol_choices = (('elec_symbol/reserve_councilor/golap.png', _('Golap')),
+                      ('elec_symbol/reserve_councilor/haat_pakha.png', _('Haat Pakha')),
+                      ('elec_symbol/reserve_councilor/harricane.png', _('Harricane')),
+                      ('elec_symbol/reserve_councilor/joba.png', _('Joba')),
+                      ('elec_symbol/reserve_councilor/mom_bati.png', _('Mom Bati')),
+                      )
     election_id = models.ForeignKey(election,verbose_name='ELection', on_delete=models.CASCADE)
     name = models.CharField(verbose_name=_('Candidate Name'),max_length=200)
     picture = models.ImageField(verbose_name=_('Candidate Picture'),upload_to='candidate_pic/')
-    symbol = models.ImageField(verbose_name=_('Candidate Symbol'),upload_to='elec_symbol/')
+    symbol = models.ImageField(verbose_name=_('Candidate Symbol'), choices=symbol_choices)
     reserve_ward_1 = models.IntegerField(verbose_name=_('Candidate Ward 1'))
     reserve_ward_2 = models.IntegerField(verbose_name=_('Candidate Ward 2'))
     reserve_ward_3 = models.IntegerField(verbose_name=_('Candidate Ward 3'))
