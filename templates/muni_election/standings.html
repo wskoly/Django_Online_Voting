@@ -1,5 +1,83 @@
 {% extends "muni_election/base.html" %}
+{% load i18n %}
+{% load progress %}
 {% block title %}Standings{% endblock %}
 {% block content %}
-<h1>Election Standings</h1>
+<h1>{{wc}}</h1>
+{% if has_election %}
+<h1>{% translate "Election Standings" %}</h1>
+<h1>{% translate "Mayor Candidate" %}</h1>
+    <table class="styled-table" style="margin-left: auto; margin-right: auto;">
+        <th>{% translate "Name" %}</th>
+        <th>{% translate "Image" %}</th>
+        <th>{% translate "Symbol" %}</th>
+        <th>{% translate "Vote Count" %}</th>
+        <th>{% translate "Progress" %}</th>
+        {% for m in mayors%}
+        <tr>
+            <td style="text-align: center;">
+                <h2>{{m.name}}</h2>
+            </td>
+            <td><img src="{{MEDIA_URL}}{{m.picture}}" width="100" height="100"></td>
+            <td><img src="{{MEDIA_URL}}{{m.symbol}}" width="100" height="100"></td>
+            <td><h1>{{m.vote_count}}</h1></td>
+            <td>
+                <div class="progress-circle-container">
+                  <div class="progress-circle progress-{{m.vote_count|prg_cls:mayor_total}}"><span>{{m.vote_count|prg_bar:mayor_total}}</span></div>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h1>{% translate "Councilor Candidate" %}</h1>
+    <table class="styled-table" style="margin-left: auto; margin-right: auto;">
+        <th>{% translate "Name" %}</th>
+        <th>{% translate "Image" %}</th>
+        <th>{% translate "Symbol" %}</th>
+        <th>{% translate "Vote Count" %}</th>
+        <th>{% translate "Progress" %}</th>
+        {% for m in councilors%}
+        <tr>
+            <td style="text-align: center;">
+                <h2>{{m.name}}</h2>
+            </td>
+            <td><img src="{{MEDIA_URL}}{{m.picture}}" width="100" height="100"></td>
+            <td><img src="{{MEDIA_URL}}{{m.symbol}}" width="100" height="100"></td>
+            <td><h1>{{m.vote_count}}</h1></td>
+            <td>
+                <div class="progress-circle-container">
+                    <div class="progress-circle progress-{{m.vote_count|prg_cls:councilor_total}}"><span>{{m.vote_count|prg_bar:councilor_total}}</span></div>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h1>{% translate "Reserve Councilor Candidates" %}</h1>
+    <table class="styled-table" style="margin-left: auto; margin-right: auto;">
+        <th>{% translate "Name" %}</th>
+        <th>{% translate "Image" %}</th>
+        <th>{% translate "Symbol" %}</th>
+        <th>{% translate "Vote Count" %}</th>
+        <th>{% translate "Progress" %}</th>
+        {% for m in re_councilors%}
+        <tr>
+            <td style="width: 30%; text-align: center;">
+                <h2>{{m.name}}</h2>
+            </td>
+            <td><img src="{{MEDIA_URL}}{{m.picture}}" width="100" height="100"></td>
+            <td><img src="{{MEDIA_URL}}{{m.symbol}}" width="100" height="100"></td>
+            <td><h1>{{m.vote_count}}</h1></td>
+            <td>
+                <div class="progress-circle-container">
+                    <div class="progress-circle progress-{{m.vote_count|prg_cls:re_councilor_total}}"><span>{{m.vote_count|prg_bar:re_councilor_total}}</span></div>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+<h1>{% translate "No election found for you." %}</h1>
+{% endif %}
 {% endblock %}
