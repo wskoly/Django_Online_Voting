@@ -29,11 +29,11 @@ class MayorAdmin(admin.ModelAdmin):
 
 class CouncilorAdmin(admin.ModelAdmin):
     exclude = ('vote_count',)
-    list_display = ['election_id', 'name', 'symbol', 'vote_count']
+    list_display = ['election_id', 'name', 'symbol', 'ward_no', 'vote_count']
 
 class ReCouncilorAdmin(admin.ModelAdmin):
     exclude = ('vote_count',)
-    list_display = ['election_id', 'name', 'symbol', 'vote_count']
+    list_display = ['election_id', 'name', 'symbol', 'reserve_ward_1', 'reserve_ward_2', 'reserve_ward_3', 'vote_count']
 
 class vote_st(admin.ModelAdmin):
     readonly_fields = ['voter_hash','election_id', 'mayor_candidate', 'councilor_candidate', 're_councilor_candidate']
