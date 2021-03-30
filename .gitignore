@@ -143,5 +143,14 @@ dmypy.json
 .candidate_pic
 .candidate_pic/
 .candidate_pic/*
+*.candidate_pic/
+*.candidate_pic/*
+**/**/candidate_pic
+**/**/candidate_pic/*
 
 .voter_info.txt
+**/voter_info.txt
+voter_info.txt
+/voter_info.*
+/voter_info.txt
+voter_info.txt
