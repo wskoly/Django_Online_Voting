@@ -25,24 +25,25 @@ class electionAdmin(admin.ModelAdmin):
 
 class MayorAdmin(admin.ModelAdmin):
     exclude = ('vote_count',)
-    list_display = ['election_id','name', 'vote_count']
+    list_display = ['election_id','name', 'symbol', 'vote_count']
 
 class CouncilorAdmin(admin.ModelAdmin):
     exclude = ('vote_count',)
-    list_display = ['election_id', 'name', 'vote_count']
+    list_display = ['election_id', 'name', 'symbol', 'vote_count']
 
 class ReCouncilorAdmin(admin.ModelAdmin):
     exclude = ('vote_count',)
-    list_display = ['election_id', 'name', 'vote_count']
+    list_display = ['election_id', 'name', 'symbol', 'vote_count']
 
 class vote_st(admin.ModelAdmin):
     readonly_fields = ['voter_hash','election_id', 'mayor_candidate', 'councilor_candidate', 're_councilor_candidate']
 
+class voted(admin.ModelAdmin):
+    readonly_fields = ['election_id','user']
+
 class staffAdmin(admin.ModelAdmin):
     list_display = ['user','staff_name','role']
 
-class voted(admin.ModelAdmin):
-    readonly_fields = ['election_id','user']
 
 class voterMigrateAdmin(admin.ModelAdmin):
     model = voter_migration
