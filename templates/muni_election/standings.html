@@ -5,7 +5,9 @@
 {% block content %}
 <h1>{{wc}}</h1>
 {% if has_election %}
-<h1>{% translate "Election Standings" %}</h1>
+<table class="notice">
+    <td>{{standing_header}}</td>
+</table>
 <h1>{% translate "Mayor Candidate" %}</h1>
     <table class="styled-table" style="margin-left: auto; margin-right: auto;">
         <th>{% translate "Name" %}</th>
