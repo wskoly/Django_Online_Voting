@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html>
 
@@ -32,7 +33,7 @@
             <h4>Online Election Platform</h4>
         </div>
         <div class="menu">
-            <h4>Menu</h4>
+            <h4>{% translate "Menu" %}</h4>
         </div>
     </div>
 
@@ -42,10 +43,10 @@
                 alt="logo" />
         </div>
         <ul>
-            <li><a class="active" href="{% url 'vote' %}">Caste Vote</a></li>
-            <li><a href="{% url 'standings' %}">Standings</a></li>
-            <li><a href="{% url 'change_password' %}">Change Password</a></li>
-            <li style="float:right;"><a href="{% url 'logout' %}">Logout</a></li>
+            <li><a class="active" href="{% url 'vote' %}">{% translate "Caste Vote" %}</a></li>
+            <li><a href="{% url 'standings' %}">{% translate "Standings" %}</a></li>
+            <li><a href="{% url 'change_password' %}">{% translate "Change Password" %}</a></li>
+            <li style="float:right;"><a href="{% url 'logout' %}">{% translate "Logout" %}</a></li>
         </ul>
     </nav>
 </header>
