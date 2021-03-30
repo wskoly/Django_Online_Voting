@@ -10,7 +10,9 @@
 		<table class="styled-table">
 			{{form}}
 		</table>
-		<input type="submit" value="Login" class="submit">
+		<input type="submit" value="Login" class="{% translate 'submit' %}">
+		<br>
+		<a style="margin: 0 auto; display:block; text-align: center" href="{% url 'password_reset' %}">{% translate "Click here to Set/Reset Your Password" %}</a>
 	</fieldset>
 </form>
 {% endblock %}
