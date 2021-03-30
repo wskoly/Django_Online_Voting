@@ -54,6 +54,8 @@ def voter_migration_func(start_date, end_date):
                              dob=dob, gender=gender, ward=ward,
                              municipality=muni)
             voterObj.save()
-            file.write("Username:|" + voter_id + "| Password:|" + password + "| DOB:" + dob + "\n")
+            file.write("Username:|" + voter_id + "| Password:|" + password +
+                       "| Municipality:|"+muni+"| Ward:|"+str(ward)+"| \n")
         else:
             print("User Already exists")
+    file.close()
