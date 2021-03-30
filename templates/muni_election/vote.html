@@ -1,20 +1,20 @@
 {% extends "muni_election/base.html" %}
 {%load static %}
+{% load i18n %}
 {% block title %}Caste Vote{% endblock %}
 {% block content %}
 <h1>{{welcome}}</h1>
-<h1>Cast your vote</h1>
 <!--<h2>{{voter}}</h2>
 <h2>{{area}}</h2>-->
 {% if has_election and is_open and is_voted == False %}
-<h1>Mayor Candidate</h1>
+<h1>{% translate "Mayor Candidates" %}</h1>
 <form action method="POST">
     {% csrf_token %}
     <table class="styled-table">
-        <th>Name</th>
-        <th>Image</th>
-        <th>Symbol</th>
-        <th>Vote</th>
+        <th>{% translate "Name" %}</th>
+        <th>{% translate "Image" %}</th>
+        <th>{% translate "Symbol" %}</th>
+        <th>{% translate "Vote" %}</th>
         {% for m in mayor%}
         <tr>
             <td style="text-align: center;">
@@ -39,12 +39,12 @@
         {% endfor %}
     </table>
 
-    <h1>Councilors</h1>
+    <h1>{% translate "Councilor Candidates" %}</h1>
     <table class="styled-table">
-        <th>Name</th>
-        <th>Image</th>
-        <th>Symbol</th>
-        <th>Vote</th>
+        <th>{% translate "Name" %}</th>
+        <th>{% translate "Image" %}</th>
+        <th>{% translate "Symbol" %}</th>
+        <th>{% translate "Vote" %}</th>
         {% for m in councilors%}
         <tr>
             <td style="text-align: center;">
@@ -69,12 +69,12 @@
         {% endfor %}
     </table>
 
-    <h1>Reserve Councilors</h1>
+    <h1>{% translate "Reserve Councilor candidates" %}</h1>
     <table class="styled-table">
-        <th>Name</th>
-        <th>Image</th>
-        <th>Symbol</th>
-        <th>Vote</th>
+        <th>{% translate "Name" %}</th>
+        <th>{% translate "Image" %}</th>
+        <th>{% translate "Symbol" %}</th>
+        <th>{% translate "Vote" %}</th>
         {% for m in re_councilors%}
         <tr>
             <td style="width: 30%; text-align: center;">
@@ -102,15 +102,15 @@
 </form>
 {% elif has_election and is_open == False and is_voted == False %}
 <table class="notice">
-    <td>Sorry The voting has not started yet. Please wait for it to start.</td>
+    <td>{% translate "Sorry The voting has not started yet. Please wait for it to start." %}</td>
 </table>
 {% elif has_election and is_voted == True %}
 <table class="notice">
-    <td>You have voted already. Thank you for your participation.</td>
+    <td>{% translate "You have voted already. Thank you for your participation." %}</td>
 </table>
 {%else%}
 <table class="notice">
-    <td>Sorry No election exist right now in your areas.</td>
+    <td>{% translate "Sorry No election exist right now in your areas." %}</td>
 </table>
 {%endif%}
 <script type="text/javascript">
@@ -122,16 +122,16 @@
             var councilor = $("input[name='councilor']:checked").val();
             var re_councilor = $("input[name='re_councilor']:checked").val();
             if((!mayor && !councilor)|(!mayor && !re_councilor)|(!councilor && !re_councilor)|(!mayor && !councilor && !re_councilor)){
-                alert("No blank vote is accepted.");
+                alert("{% translate 'No blank vote is accepted.' %}");
             }
             else if (!mayor) {
-                alert("You haven't vote for any  mayor.");
+                alert("{% translate 'You have not vote for any  mayor.' %}");
             }
             else if (!councilor) {
-                alert("You haven't vote for any councilor.");
+                alert("{% translate 'You have not vote for any councilor.' %}");
             }
             else if (!re_councilor) {
-                alert("You haven't vote for any reserve councilor.");
+                alert("{% translate 'You have not vote for any reserve councilor.' %}");
             }
         });
     });
