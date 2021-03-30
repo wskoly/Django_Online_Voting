@@ -2,7 +2,7 @@ from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm, Pas
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 from django.forms import ModelForm
-from muni_election.models import voter
+from muni_election.models import voter, voter_migration
 from django.contrib.auth import get_user_model
 from django import forms
 
@@ -43,3 +43,16 @@ class voterReg(ModelForm):
     class Meta:
         model = voter
         fields = ['voter_id','area','serial','dob','gender','ward','municipality']
+        widgets = {
+            'dob': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+        }
+
+
+class migrateVoter(ModelForm):
+    class Meta:
+        model = voter_migration
+        fields = ['start_date','end_date']
+        widgets = {
+            'start_date': forms.DateInput(attrs={'class':'form-control', 'type':'date'}),
+            'end_date': forms.DateInput(attrs={'class':'form-control', 'type':'date'}),
+        }
