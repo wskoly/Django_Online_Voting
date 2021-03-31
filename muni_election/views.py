@@ -160,6 +160,8 @@ def voter_migrate(request):
         form = migrateVoter(request.POST)
         if form.is_valid():
             voter_migration_func(str(request.POST['start_date']),str(request.POST['end_date']))
+            obj = voter_migration(start_date=request.POST['start_date'],end_date=request.POST['end_date'])
+            obj.save()
             messages.success(request, "Migration Done Successfully")
     else:
         form = migrateVoter()
