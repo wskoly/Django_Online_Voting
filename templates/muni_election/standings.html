@@ -8,7 +8,7 @@
 <table class="notice">
     <td>{{standing_header}}</td>
 </table>
-<h1>{% translate "Mayor Candidate" %}</h1>
+<h1>{% translate "Mayor Candidates" %}</h1>
     <table class="styled-table" style="margin-left: auto; margin-right: auto;">
         <th>{% translate "Name" %}</th>
         <th>{% translate "Image" %}</th>
@@ -32,7 +32,7 @@
         {% endfor %}
     </table>
 
-    <h1>{% translate "Councilor Candidate" %}</h1>
+    <h1>{% translate "Councilor Candidates" %}</h1>
     <table class="styled-table" style="margin-left: auto; margin-right: auto;">
         <th>{% translate "Name" %}</th>
         <th>{% translate "Image" %}</th>
@@ -80,6 +80,6 @@
         {% endfor %}
     </table>
 {% else %}
-<h1>{% translate "No election found for you." %}</h1>
+<h1>{% translate "No election found for you!" %}</h1>
 {% endif %}
 {% endblock %}

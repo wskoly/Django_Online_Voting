@@ -1,4 +1,5 @@
 {% extends "admin/base_site.html" %}
+{% load i18n %}
 {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
 {% block content %}
 <!--{% if messages %}
@@ -15,6 +16,6 @@
         {% csrf_token %}
         {{form.as_table}}
     </table>
-    <input type="submit" value="Migrate">
+    <input type="submit" value="{% translate 'Migrate' %}">
 </form>
 {% endblock %}

@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'CharuChandan3D';
+    src: url('CharuChandan3D.eot');
+    src: url('CharuChandan3D.woff') format('woff'),
+         url('CharuChandan3D.ttf') format('truetype'),
+         url('CharuChandan3D.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+@font-face {
+    font-family: 'solaimanlipi';
+    src: url('SolaimanLipi.eot');
+    src: url('SolaimanLipi.woff') format('woff'),
+         url('SolaimanLipi.ttf') format('truetype'),
+         url('SolaimanLipi.svg#SolaimanLipiNormal') format('svg'),
+         url('SolaimanLipi.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+@font-face {
+    font-family: 'bensenhandwriting';
+    src: url('BenSenHandwriting.ttf') format('truetype'),
+         url('bensenhandwriting-webfont.woff2') format('woff2'),
+         url('bensenhandwriting-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

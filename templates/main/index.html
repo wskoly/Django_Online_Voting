@@ -2,15 +2,15 @@
 {% load i18n static %}
 {%block title%}Online Election|Index{% endblock %}
 {%block content%}
-<h1>{% translate "Welcome to the election." %}</h1>
+<h1>{% translate "Welcome to the Online Election Platform" %}</h1>
 <p>{{mes}}</p>
-<form action="" method="POST">
+<form action="" method="POST"style="width:50%;">
 	<fieldset>
 		{% csrf_token %}
-		<table class="styled-table">
+		<table class="styled-table" style="margin-left: auto; margin-right: auto;">
 			{{form}}
 		</table>
-		<input type="submit" value="Login" class="{% translate 'submit' %}">
+		<input type="submit" value="{% translate 'Login' %}" class="submit">
 		<br>
 		<a style="margin: 0 auto; display:block; text-align: center" href="{% url 'password_reset' %}">{% translate "Click here to Set/Reset Your Password" %}</a>
 	</fieldset>

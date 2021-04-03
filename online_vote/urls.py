@@ -19,8 +19,9 @@ from django.conf.urls.static import static
 from django.urls import path
 from muni_election import views
 from django.contrib.auth.views import *
+from django.conf.urls.i18n import i18n_patterns
 
-urlpatterns = [
+urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('vote/', views.vote, name='vote'),
@@ -35,4 +36,6 @@ urlpatterns = [
     path('reset/done/', PasswordResetCompleteView.as_view(template_name='main/pw_reset_success.html'), name='password_reset_complete'),
     path('voter_reg', views.voter_reg, name='voter_reg'),
     path('voter_reg/done/', views.voter_reg_complete, name='voter_reg_done'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('set_lang/<str:language>/', views.set_lang, name='set_lang'),
+    prefix_default_language=True
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

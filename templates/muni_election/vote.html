@@ -11,20 +11,20 @@
     <td>{{election}}</td>
 </table>
 <h1>{% translate "Mayor Candidates" %}</h1>
-<form action method="POST">
+<form action method="POST" style="width: 70%;">
     {% csrf_token %}
-    <table class="styled-table">
-        <th>{% translate "Name" %}</th>
-        <th>{% translate "Image" %}</th>
-        <th>{% translate "Symbol" %}</th>
-        <th>{% translate "Vote" %}</th>
+    <table class="styled-table" style="width: 100%;">
+        <th style="width: 35%;">{% translate "Name" %}</th>
+        <th style="width: 20%;">{% translate "Image" %}</th>
+        <th style="width: 20%;">{% translate "Symbol" %}</th>
+        <th style="width: 25%;">{% translate "Vote" %}</th>
         {% for m in mayor%}
         <tr>
             <td style="text-align: center;">
                 <h2>{{m.name}}</h2>
             </td>
-            <td><img src="{{MEDIA_URL}}{{m.picture}}" width="100" height="100"></td>
-            <td><img src="{{MEDIA_URL}}{{m.symbol}}" width="100" height="100"></td>
+            <td align="center"><img src="{{MEDIA_URL}}{{m.picture}}" style="margin-left: auto; margin-right: auto;" width="100" height="100"></td>
+            <td align="center"><img src="{{MEDIA_URL}}{{m.symbol}}" width="100" height="100"></td>
             <td>
                 <div class="ratings">
                     <label class="rating-item">
@@ -43,18 +43,18 @@
     </table>
 
     <h1>{% translate "Councilor Candidates" %}</h1>
-    <table class="styled-table">
-        <th>{% translate "Name" %}</th>
-        <th>{% translate "Image" %}</th>
-        <th>{% translate "Symbol" %}</th>
-        <th>{% translate "Vote" %}</th>
+    <table class="styled-table" style="width: 100%;">
+        <th style="width: 35%;">{% translate "Name" %}</th>
+        <th style="width: 20%;">{% translate "Image" %}</th>
+        <th style="width: 20%;">{% translate "Symbol" %}</th>
+        <th style="width: 25%;">{% translate "Vote" %}</th>
         {% for m in councilors%}
         <tr>
             <td style="text-align: center;">
                 <h2>{{m.name}}</h2>
             </td>
-            <td><img src="{{MEDIA_URL}}{{m.picture}}" width="100" height="100"></td>
-            <td><img src="{{MEDIA_URL}}{{m.symbol}}" width="100" height="100"></td>
+            <td align="center"><img src="{{MEDIA_URL}}{{m.picture}}" width="100" height="100"></td>
+            <td align="center"><img src="{{MEDIA_URL}}{{m.symbol}}" width="100" height="100"></td>
             <td>
                 <div class="ratings">
                     <label class="rating-item">
@@ -73,18 +73,18 @@
     </table>
 
     <h1>{% translate "Reserve Councilor candidates" %}</h1>
-    <table class="styled-table">
-        <th>{% translate "Name" %}</th>
-        <th>{% translate "Image" %}</th>
-        <th>{% translate "Symbol" %}</th>
-        <th>{% translate "Vote" %}</th>
+    <table class="styled-table" style="width: 100%;">
+        <th style="width: 35%;">{% translate "Name" %}</th>
+        <th style="width: 20%;">{% translate "Image" %}</th>
+        <th style="width: 20%;">{% translate "Symbol" %}</th>
+        <th style="width: 25%;">{% translate "Vote" %}</th>
         {% for m in re_councilors%}
         <tr>
-            <td style="width: 30%; text-align: center;">
+            <td style="text-align: center;">
                 <h2>{{m.name}}</h2>
             </td>
-            <td><img src="{{MEDIA_URL}}{{m.picture}}" width="100" height="100"></td>
-            <td><img src="{{MEDIA_URL}}{{m.symbol}}" width="100" height="100"></td>
+            <td align="center"><img src="{{MEDIA_URL}}{{m.picture}}" width="100" height="100"></td>
+            <td align="center"><img src="{{MEDIA_URL}}{{m.symbol}}" width="100" height="100"></td>
             <td>
                 <div class="ratings">
                     <label class="rating-item">
@@ -101,7 +101,7 @@
         </tr>
         {% endfor %}
     </table>
-    <input type="submit" class="submit" value="VOTE">
+    <input type="submit" class="submit" value="{% translate 'Vote' %}">
 </form>
 {% elif has_election and is_open == False and is_voted == False %}
 <table class="notice">

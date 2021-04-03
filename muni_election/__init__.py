@@ -1,0 +1,1 @@
+default_app_config = 'muni_election.apps.MuniElectionConfig'

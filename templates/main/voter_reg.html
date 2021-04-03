@@ -3,8 +3,8 @@
 {%block title%}Online Election|Voter Registration{% endblock %}
 {%block content%}
 <h1>{% translate 'Voter Registration' %}</h1>
-<form method="POST">
-    <fieldset>
+<form method="POST" style="width:60%">
+    <fieldset style="width: 80%;">
         {% csrf_token %}
         <table class="styled-table">
             {{form1}}

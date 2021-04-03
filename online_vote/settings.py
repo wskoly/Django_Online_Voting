@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from django.utils.translation import gettext_lazy as _
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = BASE_DIR.joinpath('templates')
@@ -24,13 +25,10 @@ SECRET_KEY = '*zxu%m^=l2^g1(1dqv@kdu#l_s0r%hnb7+7b_6ui1h3-34&x30'
 #SMTP password
 Smtp_pw = 'OnlineVotingDjango#HASH512'
 
-SITE_NAME = 'adiba-online-election.com'
-
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','127.0.0.1','192.168.0.5','ovs.com','www.ovs.com','www.electiononlinebd.ml','electiononlinebd.ml']
 
 
 # Application definition
@@ -48,6 +46,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -126,6 +125,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+LANGUAGES = [
+    ('en', _('English')),
+    ('bn', _('Bangla')),
+]
 
 
 # Static files (CSS, JavaScript, Images)
@@ -137,6 +140,8 @@ STATICFILES_DIRS = [
 ]
 MEDIA_URL= '/media/'
 MEDIA_ROOT = BASE_DIR/ 'media'
+
+LOCALE_PATHS = (BASE_DIR.joinpath('locale'),)
 
 # auth user model
 AUTH_USER_MODEL = 'muni_election.user'

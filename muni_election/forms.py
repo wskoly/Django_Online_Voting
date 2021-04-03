@@ -24,7 +24,7 @@ class VoterLoginForm(AuthenticationForm):
             )
 
 class userReg(ModelForm):
-    confirm_password = forms.CharField(widget=forms.PasswordInput())
+    confirm_password = forms.CharField(label=_("Confirm Password"),widget=forms.PasswordInput())
     class Meta:
         user = get_user_model()
         model = user
@@ -37,7 +37,7 @@ class userReg(ModelForm):
         password = cleaned_data.get('password')
         confirm_password = cleaned_data.get('confirm_password')
         if(password != confirm_password):
-            raise forms.ValidationError("Both password does not matched")
+            raise forms.ValidationError(_("Both password does not matched"))
 
 class voterReg(ModelForm):
     class Meta:

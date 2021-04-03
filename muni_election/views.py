@@ -3,12 +3,14 @@ from .forms import *
 from django.contrib.auth import authenticate, login, logout,get_user_model
 from django.contrib.auth.decorators import login_required
 from django.forms.models import model_to_dict as mTd
-from django.utils.translation import gettext, gettext_lazy as _, get_language,activate
+from django.utils.translation import gettext as _
 from django.contrib.auth.hashers import make_password as voter_hasher
 from django.core.exceptions import ObjectDoesNotExist
 from  .utilities import *
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
+from django.conf import settings
+from django.utils import translation
 
 #index view
 def index(request):
@@ -31,7 +33,7 @@ def index(request):
 @login_required(login_url='index')
 def vote(request):
     if request.user.is_voter:
-        wc = "Welcome "+request.user.first_name+" "+request.user.last_name
+        wc = _("Welcome ")+request.user.first_name+" "+request.user.last_name
         user = request.user
         vot = voter.objects.get(user = user)
         area = vot.area.code
@@ -66,9 +68,6 @@ def vote(request):
                         return redirect('vote_done')
                     except Exception as e:
                         print(e)
-                    print(request.POST['mayor'])
-                    print(request.POST['councilor'])
-                    print(request.POST['re_councilor'])
                 try:
                     #election_id = election.election_areas.through.objects.get(voter_area_id=area).election_id
                     #electionObj = election.objects.get(pk=election_id)
@@ -97,7 +96,7 @@ def vote_done(request):
 @login_required(login_url='index')
 def standings(request):
     if request.user.is_voter:
-        wc = "Welcome " + request.user.first_name + " " + request.user.last_name
+        wc = _("Welcome ") + request.user.first_name + " " + request.user.last_name
         election_id = request.session.get('election_id')
         ward = request.session.get('ward')
         if election_id:
@@ -162,9 +161,20 @@ def voter_migrate(request):
             voter_migration_func(str(request.POST['start_date']),str(request.POST['end_date']))
             obj = voter_migration(start_date=request.POST['start_date'],end_date=request.POST['end_date'])
             obj.save()
-            messages.success(request, "Migration Done Successfully")
+            messages.success(request, _("Migration Done Successfully"))
     else:
         form = migrateVoter()
     context = {'has_permission':True,'site_header':'Online Election Platform Administration', 'form':form, 'title': 'Migrate Voters From National DB' }
     return render(request,'muni_election/migrate_voter.html',context)
+
+def set_lang(request, language):
+    referer_url = str(request.META.get('HTTP_REFERER'))
+    if(language=='bn'):
+        redirect_url = referer_url.replace('en','bn')
+    elif(language=='en'):
+        redirect_url= referer_url.replace('bn', 'en')
+    translation.activate(language)
+    response = redirect(redirect_url)
+    response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language)
+    return response
 

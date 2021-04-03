@@ -7,6 +7,9 @@ class user(AbstractUser):
     phone = models.CharField(verbose_name=_('Phone'),max_length=14)
     is_voter = models.BooleanField(default=False)
 
+    class Meta:
+        verbose_name_plural= _('User Information')
+
 #relational model voter area
 class voter_area(models.Model):
     code = models.CharField(verbose_name=_('Area Code'), max_length=200, primary_key=True)
@@ -18,7 +21,7 @@ class voter_area(models.Model):
     def __str__(self):
         return self.name +"(Code:"+ self.code+")"
     class Meta:
-        verbose_name_plural = _("Voting Area Info")
+        verbose_name_plural = _("Voting Area Information")
 
 #voter model which also has OneToOne relation with user model
 class voter(models.Model):
@@ -40,15 +43,15 @@ class voter(models.Model):
         return self.user.phone
     def __str__(self):
         return self.voter_id
-    get_name.short_description = "Full name"
-    get_email.short_description = 'Email'
-    get_phone.short_description = 'Phone'
+    get_name.short_description = _("Full name")
+    get_email.short_description = _('Email')
+    get_phone.short_description = _('Phone')
     class Meta:
-        verbose_name_plural = _("Voters Info")
+        verbose_name_plural = _("Voters Information")
 
 #staff model
 class election_staff(models.Model):
-    role_choice = (('Data Migrator','Data Migrator'),('Election Manager','Election Manager'))
+    role_choice = (('Data Migrator',_('Data Migrator')),('Election Manager',_('Election Manager')))
 
     user = models.OneToOneField(user, verbose_name=_('User Name'), on_delete=models.CASCADE)
     role = models.CharField(max_length=200, verbose_name=_('Staffs Role'), choices=role_choice)
@@ -57,13 +60,13 @@ class election_staff(models.Model):
     def __str__(self):
         return str(self.user)
     class Meta:
-        verbose_name_plural = _("ELection Staff's Info")
+        verbose_name_plural = _("ELection Staff's Information")
 
 #election model
 class election(models.Model):
     name = models.CharField(verbose_name=_('Election Name'), max_length=255)
     num_of_ward = models.IntegerField(verbose_name=_('Number of Ward'),)
-    is_open = models.BooleanField(default=False)
+    is_open = models.BooleanField(verbose_name=_('Is Open'),default=False)
     is_res_published = models.BooleanField(verbose_name=_('Is Result Published'),default=False)
     election_areas = models.ManyToManyField(voter_area)
 
@@ -72,7 +75,7 @@ class election(models.Model):
     def __str__(self):
         return self.name
     class Meta:
-        verbose_name_plural = _("Election Info")
+        verbose_name_plural = _("Election Information")
 
 class mayor_candidate(models.Model):
     symbol_choices = (('elec_symbol/mayor/nouka.png', _('Nouka')),
@@ -89,12 +92,12 @@ class mayor_candidate(models.Model):
     name = models.CharField(verbose_name=_('Candidate Name'),max_length=200)
     picture = models.ImageField(verbose_name=_('Candidate Picture'),upload_to = 'candidate_pic/')
     symbol = models.ImageField(verbose_name=_('Candidate Symbol'), choices=symbol_choices)
-    vote_count = models.IntegerField(verbose_name=_('Candidate Vote Count'),default=0)
+    vote_count = models.IntegerField(verbose_name=_('Vote Count'),default=0)
 
     def __str__(self):
         return self.name+"(election:"+ str(self.election_id)+")"
     class Meta:
-        verbose_name_plural = _("Mayor Candidates Info")
+        verbose_name_plural = _("Mayor Candidates Information")
 
 class councilor_candidate(models.Model):
     symbol_choices = (('elec_symbol/councilor/austrich.png', _('Uut Pakhi')),
@@ -108,11 +111,11 @@ class councilor_candidate(models.Model):
     picture = models.ImageField(verbose_name=_('Candidate Picture'),upload_to='candidate_pic/')
     symbol = models.ImageField(verbose_name=_('Candidate Symbol'), choices=symbol_choices)
     ward_no = models.IntegerField(verbose_name=_('Candidate Ward'))
-    vote_count = models.IntegerField(default=0)
+    vote_count = models.IntegerField(verbose_name=_('Vote Count'),default=0)
     def __str__(self):
         return self.name+"(election:"+ str(self.election_id)+")"
     class Meta:
-        verbose_name_plural = _("Councilors Candidate Info")
+        verbose_name_plural = _("Councilors Candidate Information")
 
 class re_councilor_candidate(models.Model):
     symbol_choices = (('elec_symbol/reserve_councilor/golap.png', _('Golap')),
@@ -128,11 +131,11 @@ class re_councilor_candidate(models.Model):
     reserve_ward_1 = models.IntegerField(verbose_name=_('Candidate Ward 1'))
     reserve_ward_2 = models.IntegerField(verbose_name=_('Candidate Ward 2'))
     reserve_ward_3 = models.IntegerField(verbose_name=_('Candidate Ward 3'))
-    vote_count = models.IntegerField(_('Candidate Vote Count'),default=0)
+    vote_count = models.IntegerField(_('Vote Count'),default=0)
     def __str__(self):
         return self.name+"(election:"+ str(self.election_id)+")"
     class Meta:
-        verbose_name_plural = _("Reserve Councilors Candidate Info")
+        verbose_name_plural = _("Reserve Councilors Candidate Information")
 
 class vote_store(models.Model):
     voter_hash = models.CharField(max_length=128, editable=False)
@@ -152,7 +155,7 @@ class voter_migration(models.Model):
     end_date = models.DateField(help_text=_('The ending date of birth parameter'))
     class Meta:
         default_permissions = ('add', 'delete', 'view')
-        verbose_name_plural = "Migrate Voters From National DB"
+        verbose_name_plural = _("Migrate Voters From National DB")
         app_label = 'muni_election'
 
 

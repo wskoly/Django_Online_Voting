@@ -1,13 +1,23 @@
 {% load i18n static %}
+{% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
 <html>
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{%block title%}{% endblock %}</title>
+	<link rel="shortcut icon" href="{% static 'muni_election/logo/favicon.ico' %}" type="image/x-icon">
+	<link rel="icon" href="{% static 'muni_election/logo/favicon.ico' %}" type="image/x-icon">
+	{% if LANGUAGE_CODE == 'en' %}
 	<link rel="stylesheet" href="{% static 'muni_election/css/form.css' %}">
 	<link rel="stylesheet" href="{% static 'muni_election/css/nav.css' %}">
 	<link rel="stylesheet" href="{% static 'muni_election/css/notice.css' %}">
+	{% elif LANGUAGE_CODE == 'bn' %}
+	<link rel="stylesheet" href="{% static 'muni_election/css/bn/fonts.css' %}">
+	<link rel="stylesheet" href="{% static 'muni_election/css/bn/form.css' %}">
+	<link rel="stylesheet" href="{% static 'muni_election/css/bn/nav.css' %}">
+	<link rel="stylesheet" href="{% static 'muni_election/css/bn/notice.css' %}">
+	{% endif %}
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
@@ -22,12 +32,32 @@
 		<div class="header">
 			<div class="leftImage"><img src="{% static 'muni_election/logo/ovs_logo.png'%}" alt="logo" /></div>
 			<div class="rightImage"><img src="{% static 'muni_election/logo/ovs_logo.png'%}" alt="logo" /></div>
-			<div class="Title">ONLINE ELECTION PLATFORM</div>
+			<div class="Title">{% translate 'ONLINE ELECTION PLATFORM' %}</div>
 		</div>
 	</section>
-	<div class="secborder"></div>
 	{% block content %}
 	{% endblock %}
+	{% if LANGUAGE_CODE == 'en' %}
+        <a class="ontop" href="{% url 'set_lang' language='bn' %}">
+            <div style="float:left;display: block; margin-top: 12px;">
+                <img src="{% static 'muni_election/logo/bd.png' %}" height="40px" width="40px">
+            </div>
+            <div style="float:left; display: block; padding:18px 0 0 8px;">
+                {% translate "BANGLA" %}
+            </div>
+        </a>
+        {% elif LANGUAGE_CODE == 'bn' %}
+        <a class="ontop" href="{% url 'set_lang' language='en' %}">
+            <div style="float:left;display: block; margin-top: 12px;">
+                <img src="{% static 'muni_election/logo/USA.png' %}" height="40px" width="40px">
+            </div>
+            <div style="float:left; display: block; padding:18px 0 0 8px;">
+                {% translate "ENGLISH" %}
+            </div>
+            </a>
+        {% endif %}
+    <div class="bottomFixedBar">
+    </div>
 	<script src="{% static 'muni_election/js/loader.js' %}"></script>
 </body>
 
