@@ -35,6 +35,9 @@
 			<div class="Title">{% translate 'ONLINE ELECTION PLATFORM' %}</div>
 		</div>
 	</section>
+	<div class="fixed-button">
+		<a href="{% url 'index' %}" class="btn">{% translate 'Login page' %}</a>
+	  </div>
 	{% block content %}
 	{% endblock %}
 	{% if LANGUAGE_CODE == 'en' %}
