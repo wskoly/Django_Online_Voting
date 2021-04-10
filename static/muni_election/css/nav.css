@@ -129,7 +129,7 @@ section.sec1{
   position: relative; 
   top:50%; 
   left: 50%; 
-  transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-90%);
 }
 .header .Title{
   font-family: 'Saira Stencil One', cursive;
@@ -149,11 +149,13 @@ section.sec1{
 .header .leftImage img{
  float:left;
  height: 100px;
+ margin-top: 20px;
  margin-left: 20px;
 }
 .header .rightImage img{
   float: right;
   height: 100px;
+  margin-top: 20px;
   margin-right: 20px;
 }
 
@@ -380,6 +382,24 @@ a.ontop{
 }
 
 a.ontop:hover{
+  opacity: 1;
+  color: rgb(194, 5, 5);
+  z-index: 9999;
+}
+
+a.ontopCopy{
+  text-decoration: none;
+  position: fixed;
+  bottom: 2%;
+  right: 1%;
+  opacity: 1;
+  color: white;
+
+  font-size: 1em;
+  z-index: 999;
+}
+
+a.ontopCopy:hover{
   opacity: 1;
   color: rgb(194, 5, 5);
   z-index: 9999;

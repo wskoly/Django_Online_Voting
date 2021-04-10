@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-05 14:39+0600\n"
-"PO-Revision-Date: 2021-04-05 14:41+0600\n"
+"POT-Creation-Date: 2021-04-11 01:09+0600\n"
+"PO-Revision-Date: 2021-04-11 01:11+0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: bn\n"
@@ -368,6 +368,10 @@ msgstr "বাংলা"
 #: .\templates\main\base.html:58 .\templates\muni_election\base.html:82
 msgid "ENGLISH"
 msgstr "ইংরেজি"
+
+#: .\templates\main\base.html:63
+msgid "HOMAIRA ADIBA"
+msgstr "হোমায়রা আদিবা"
 
 #: .\templates\main\index.html:5
 msgid "Welcome to the Online Election Platform"
