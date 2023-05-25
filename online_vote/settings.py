@@ -23,7 +23,7 @@ TEMPLATES_DIR = BASE_DIR.joinpath('templates')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '*zxu%m^=l2^g1(1dqv@kdu#l_s0r%hnb7+7b_6ui1h3-34&x30'
 #SMTP password
-Smtp_pw = 'OnlineVotingDjango#HASH512'
+Smtp_pw = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
